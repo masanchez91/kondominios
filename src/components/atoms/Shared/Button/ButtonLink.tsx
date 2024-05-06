@@ -11,7 +11,7 @@ const ButtonLink: React.FC<ButtonLinkProps> = ({ to, children }) => {
 		<Link
 			to={to}
 			className={
-				"active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] ease-in-out transform py-2 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-bold text-md"
+				"block w-full mx-auto my-4 py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white font-bold text-md text-center"
 			}
 		>
 			{children}

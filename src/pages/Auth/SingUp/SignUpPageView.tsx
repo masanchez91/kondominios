@@ -1,5 +1,5 @@
-import SignUpPage from "../../components/organisms/AuthPage/SignUp/SignUpPage";
-import AuthTemplate from "../../components/templates/AuthTemplate";
+import SignUpPage from "../../../components/organisms/AuthPage/SignUp/SignUpPage";
+import AuthTemplate from "../../../components/templates/AuthTemplate";
 
 function SignUpPageView() {
 	return (

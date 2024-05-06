@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { authImages } from "../../../../utils/authImages";
+import { authImages } from "../../../../utilities/authImages";
 import LoginForm from "../../../molecules/Auth/Login/LoginForm";
 import RandomImageGenerator from "../../../molecules/Shared/RandomImageGenerator";
 

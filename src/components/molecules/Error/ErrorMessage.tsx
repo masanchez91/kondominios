@@ -9,10 +9,10 @@ interface ErrorMessageProps {
 
 const ErrorMessage: React.FC<ErrorMessageProps> = ({ message, status }) => {
 	return (
-		<>
+		<div className="flex flex-col items-center justify-center">
 			<TextHeading>{message}</TextHeading>
 			<TextParagraph>{status}</TextParagraph>
-		</>
+		</div>
 	);
 };
 

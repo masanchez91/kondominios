@@ -9,8 +9,8 @@ const UndrawTakenIcon: React.FC<SvgProps> = (props) => (
 		data-name="Layer 1"
 		xmlns="http://www.w3.org/2000/svg"
 		xmlnsXlink="http://www.w3.org/1999/xlink"
-		width="840"
-		height="726.85"
+		width="504"
+		height="436"
 		viewBox="0 0 840 726.85"
 		{...props}
 		className="mt-8"

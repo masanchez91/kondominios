@@ -1,5 +1,6 @@
 import React from "react";
 import ButtonLink from "../../atoms/Shared/Button/ButtonLink";
+import UndrawTakenIcon from "../../icons/UndrawTakenIcon";
 import ErrorMessage from "./ErrorMessage";
 
 interface ErrorPageContentProps {
@@ -12,10 +13,15 @@ const ErrorPageContent: React.FC<ErrorPageContentProps> = ({
 	status,
 }) => {
 	return (
-		<div className="flex flex-col items-center justify-center h-screen">
-			<ErrorMessage message={message} status={status} />
-			<ButtonLink to="/login">Ir a inicio de sesión</ButtonLink>
-		</div>
+		<>
+			<div className="space-y-6 w-full rounded mt-4">
+				<ErrorMessage message={message} status={status} />
+				<UndrawTakenIcon />
+				<div className="mt-8 flex flex-col gap-y-4">
+					<ButtonLink to="/login">Regresar</ButtonLink>
+				</div>
+			</div>
+		</>
 	);
 };
 
