@@ -1,30 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { authImages } from "../../../../utilities/authImages";
 import LoginForm from "../../../molecules/Auth/Login/LoginForm";
 import RandomImageGenerator from "../../../molecules/Shared/RandomImageGenerator";
 
 const LoginPage: React.FC = () => {
-	const [loading, setLoading] = useState(true);
+  const [loading] = useState(false);
 
-	useEffect(() => {
-		setTimeout(() => {
-			setLoading(false);
-		}, 300);
-	}, []);
+  const imagePaths = authImages;
 
-	const imagePaths = authImages;
+  return (
+    <>
+      <div className="md:w-1/2 px-8 md:px-16">
+        <LoginForm loading={loading} />
+      </div>
 
-	return (
-		<>
-			<div className="md:w-1/2 px-8 md:px-16">
-				<LoginForm loading={loading} />
-			</div>
-
-			<div className="md:block hidden w-1/2">
-				<RandomImageGenerator imagePaths={imagePaths} />
-			</div>
-		</>
-	);
+      <div className="md:block hidden w-1/2">
+        <RandomImageGenerator imagePaths={imagePaths} />
+      </div>
+    </>
+  );
 };
 
 export default LoginPage;

@@ -6,7 +6,7 @@ export const EmptyUserState: UserInfo = {
   id: 0,
   name: "",
   email: "",
-  rol: Roles.ADMIN,
+  rol: Roles.DEFAULT,
 };
 
 export const UserKey = "user";
