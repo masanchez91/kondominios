@@ -1,6 +1,6 @@
 import React from "react";
 
-type AuthFormSkeletonProps = {};
+type AuthFormSkeletonProps = Record<string, never>;
 
 const AuthFormSkeleton: React.FC<AuthFormSkeletonProps> = () => {
 	return (

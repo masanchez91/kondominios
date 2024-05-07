@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { PrivateRoutes, PublicRoutes, Roles } from "../../../../models";
 import { UserKey, createUser, resetUser } from "../../../../redux/states/user";
-import { getMorty } from "../../../../services";
-import { clearLocalStorage } from "../../../../utilities";
+import { loginUser  } from "../../../../services";
+import { localStorageClear } from "../../../../utilities";
 import AuthFormSkeleton from "../../../atoms/Auth/AuthFormSkeleton";
 import AuthHeader from "../../../atoms/Auth/AuthHeader";
 import ButtonGoogle from "../../../atoms/Auth/ButtonGoogle";
@@ -17,22 +17,22 @@ import Checkbox from "../../../atoms/Shared/Checkbox/Checkbox";
 import Input from "../../../atoms/Shared/Input/Input";
 import Label from "../../../atoms/Shared/Label/Label";
 interface LoginFormProps {
-  loading: boolean;
+	loading: boolean;
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ loading }) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
-  useEffect(() => {
-    clearLocalStorage(UserKey);
+	useEffect(() => {
+    localStorageClear(UserKey);
     dispatch(resetUser());
     navigate(`/${PublicRoutes.LOGIN}`, { replace: true });
-  }, []);
-
+	}, [dispatch, navigate]);
+  
   const login = async () => {
-    try {
-      const result = await getMorty();
+  try {
+        const result = await loginUser();
       dispatch(createUser({ ...result, rol: Roles.ADMIN }));
       navigate(`/${PrivateRoutes.PRIVATE}`, { replace: true });
     } catch (error) {

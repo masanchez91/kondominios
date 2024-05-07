@@ -1,12 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Roles, UserInfo } from "../../models";
-import { clearLocalStorage, persistLocalStorage } from "../../utilities";
+import { localStorageClear, localStoragePersist } from '../../utilities';
 
 export const EmptyUserState: UserInfo = {
-  id: 0,
-  name: "",
-  email: "",
-  rol: Roles.DEFAULT,
+  accessToken: "",
+  refreshToken: "",
+  user: {
+    id: "",
+    name: "",
+    username: "",
+    email: "",
+    rol: Roles.DEFAULT,
+    tokenExpirationDate: "",
+    refreshTokenExpirationDate: ""
+  }
 };
 
 export const UserKey = "user";
@@ -14,20 +21,20 @@ export const UserKey = "user";
 export const userSlice = createSlice({
   name: "user",
   initialState: localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user") as string)
+    ? JSON.parse(localStorage.getItem("user") as "")
     : EmptyUserState,
   reducers: {
     createUser: (_, action) => {
-      persistLocalStorage<UserInfo>(UserKey, action.payload);
+      localStoragePersist<UserInfo>(UserKey, action.payload);
       return action.payload;
     },
     updateUser: (state, action) => {
       const result = { ...state, ...action.payload };
-      persistLocalStorage<UserInfo>(UserKey, result);
+      localStoragePersist<UserInfo>(UserKey, result);
       return result;
     },
     resetUser: () => {
-      clearLocalStorage(UserKey);
+      localStorageClear(UserKey);
       return EmptyUserState;
     },
   },
