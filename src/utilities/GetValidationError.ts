@@ -1,6 +1,5 @@
 import { TypeWithKey } from '../models/typeWithKey';
 
-// Define un tipo para los códigos de error
 type ErrorCode = keyof TypeWithKey<string>;
 
 export const GetValidationError = (errorCode: ErrorCode): string => {

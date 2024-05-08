@@ -5,10 +5,10 @@ import { UserInfo } from '../models';
 
 const loginEndpoint = '/login';
 
-export const loginUser = async () => {
+export const loginUser = async (email: string, password: string) => {
     const requestData = {
-        email: 'mauro@gmail.com',
-        password: '1234567',
+        email,
+        password,
     };
 
     return publicAxiosConfig.post(loginEndpoint, requestData).then(

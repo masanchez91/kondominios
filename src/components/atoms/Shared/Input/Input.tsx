@@ -1,17 +1,17 @@
 import React, { InputHTMLAttributes } from 'react';
 
-type InputProps = {
-    type?: string;
-    id?: string;
-} & InputHTMLAttributes<HTMLInputElement>;
+type InputProps = InputHTMLAttributes<HTMLInputElement>;
 
-const Input: React.FC<InputProps> = ({ type, id }) => {
+const Input: React.FC<InputProps> = ({ type, ...rest }) => {
     return (
         <input
             type={type}
-            id={id}
             className="w-full p-2 border border-gray-300 rounded mt-1"
             autoComplete="current-password"
+            id={rest.id}
+            name={rest.name}
+            onChange={rest.onChange}
+            value={rest.value}
         />
     );
 };

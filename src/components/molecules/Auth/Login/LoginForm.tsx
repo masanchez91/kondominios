@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { PrivateRoutes, PublicRoutes } from '../../../../models';
@@ -25,6 +25,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ loading }) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     useEffect(() => {
         localStorageClear(UserKey);
         dispatch(resetUser());
@@ -33,12 +36,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ loading }) => {
 
     const login = async () => {
         try {
-            const result = await loginUser();
+            const result = await loginUser(email, password);
             dispatch(createUser({ ...result }));
             navigate(`/${PrivateRoutes.PRIVATE}`, { replace: true });
         } catch (error) {
             console.error('Error al realizar la solicitud:', error);
-            // Manejar el error de forma adecuada, por ejemplo, mostrar un mensaje al usuario
         }
     };
 
@@ -57,13 +59,24 @@ const LoginForm: React.FC<LoginFormProps> = ({ loading }) => {
                     <Label htmlFor="email" align="left">
                         Correo:
                     </Label>
-                    <Input type="text" id="email" name="email" />
+                    <Input
+                        type="text"
+                        id="email"
+                        name="email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                    />
                 </div>
                 <div>
                     <Label htmlFor="password" align="left">
                         Contraseña:
                     </Label>
-                    <PasswordInput id="password" name="password" />
+                    <PasswordInput
+                        id="password"
+                        name="password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    />
                 </div>
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                     <Checkbox id="recuerdame" label="Recuérdame" />
