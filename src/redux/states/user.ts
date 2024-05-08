@@ -3,17 +3,13 @@ import { Roles, UserInfo } from "../../models";
 import { localStorageClear, localStoragePersist } from "../../utilities";
 
 export const EmptyUserState: UserInfo = {
-  accessToken: "",
-  refreshToken: "",
-  user: {
-    id: "",
-    name: "",
-    username: "",
-    email: "",
-    rol: Roles.DEFAULT,
-    tokenExpirationDate: "",
-    refreshTokenExpirationDate: "",
-  },
+	id: "",
+	name: "",
+	username: "",
+	email: "",
+	rol: Roles.DEFAULT,
+	tokenExpirationDate: "",
+	refreshTokenExpirationDate: "",
 };
 
 export const UserKey = "user";
