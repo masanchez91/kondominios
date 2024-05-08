@@ -8,4 +8,4 @@ export interface UserInfo {
   rol: Roles;
   tokenExpirationDate: string;
   refreshTokenExpirationDate: string;
-};
+}
