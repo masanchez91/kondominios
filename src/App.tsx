@@ -1,4 +1,4 @@
-import { SnackbarProvider } from 'notistack';
+import { SnackbarProvider } from "notistack";
 import { Suspense, lazy } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Navigate, Route } from "react-router-dom";
@@ -9,7 +9,7 @@ import LogOut from "./pages/Auth/LogOut/LogOutPageView";
 import { Dashboard } from "./pages/Private";
 import store from "./redux/store";
 import { RoutesWithNotFound } from "./utilities";
-import { SnackbarUtilitiesConfigurator } from './utilities/SnackbarManager';
+import { SnackbarUtilitiesConfigurator } from "./utilities/SnackbarManager";
 
 const Private = lazy(() => import("./routes/Private"));
 const Public = lazy(() => import("./routes/Public"));
@@ -36,7 +36,10 @@ function App() {
                   />
                 </Route>
                 <Route element={<RoleGuard rol={Roles.ADMIN} />}>
-                  <Route path={PrivateRoutes.DASHBOARD} element={<Dashboard />} />
+                  <Route
+                    path={PrivateRoutes.DASHBOARD}
+                    element={<Dashboard />}
+                  />
                 </Route>
               </RoutesWithNotFound>
             </BrowserRouter>

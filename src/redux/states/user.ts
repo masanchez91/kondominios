@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Roles, UserInfo } from "../../models";
-import { localStorageClear, localStoragePersist } from '../../utilities';
+import { localStorageClear, localStoragePersist } from "../../utilities";
 
 export const EmptyUserState: UserInfo = {
   accessToken: "",
@@ -12,8 +12,8 @@ export const EmptyUserState: UserInfo = {
     email: "",
     rol: Roles.DEFAULT,
     tokenExpirationDate: "",
-    refreshTokenExpirationDate: ""
-  }
+    refreshTokenExpirationDate: "",
+  },
 };
 
 export const UserKey = "user";

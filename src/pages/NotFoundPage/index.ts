@@ -1,2 +1,1 @@
-export { default as NotFoundPage } from './NotFoundPageView';
-
+export { default as NotFoundPage } from "./NotFoundPageView";

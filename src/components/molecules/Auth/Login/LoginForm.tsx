@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { PrivateRoutes, PublicRoutes, Roles } from "../../../../models";
+import { PrivateRoutes, PublicRoutes } from "../../../../models";
 import { UserKey, createUser, resetUser } from "../../../../redux/states/user";
-import { loginUser  } from "../../../../services";
+import { loginUser } from "../../../../services";
 import { localStorageClear } from "../../../../utilities";
 import AuthFormSkeleton from "../../../atoms/Auth/AuthFormSkeleton";
 import AuthHeader from "../../../atoms/Auth/AuthHeader";
@@ -17,23 +17,23 @@ import Checkbox from "../../../atoms/Shared/Checkbox/Checkbox";
 import Input from "../../../atoms/Shared/Input/Input";
 import Label from "../../../atoms/Shared/Label/Label";
 interface LoginFormProps {
-	loading: boolean;
+  loading: boolean;
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ loading }) => {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-	useEffect(() => {
+  useEffect(() => {
     localStorageClear(UserKey);
     dispatch(resetUser());
     navigate(`/${PublicRoutes.LOGIN}`, { replace: true });
-	}, [dispatch, navigate]);
-  
+  }, [dispatch, navigate]);
+
   const login = async () => {
-  try {
-        const result = await loginUser();
-      dispatch(createUser({ ...result, rol: Roles.ADMIN }));
+    try {
+      const result = await loginUser();
+      dispatch(createUser({ ...result }));
       navigate(`/${PrivateRoutes.PRIVATE}`, { replace: true });
     } catch (error) {
       console.error("Error al realizar la solicitud:", error);

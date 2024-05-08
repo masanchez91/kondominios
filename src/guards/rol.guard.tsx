@@ -8,7 +8,7 @@ interface Props {
 }
 
 function RoleGuard({ rol }: Props) {
-  const userState = useSelector((store: AppStore) => store.user);
+  const userState = useSelector((store: AppStore) => store.user.user);
   return userState.rol === rol ? (
     <Outlet />
   ) : (

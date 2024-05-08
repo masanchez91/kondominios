@@ -25,7 +25,7 @@ interface AdaptAxiosRequestConfig extends AxiosRequestConfig {
  * @returns La configuración de la solicitud actualizada.
  */
 const updateHeader = (
-  request: AdaptAxiosRequestConfig
+  request: AdaptAxiosRequestConfig,
 ): AdaptAxiosRequestConfig => {
   // Obtiene el token de autorización del almacenamiento local
   const token = localStorageGet(LocalStorageKeys.ACCESS_TOKEN);
@@ -62,7 +62,7 @@ export const AxiosInterceptor = () => {
     (error) => {
       // Manejar errores de solicitud
       return Promise.reject(error);
-    }
+    },
   );
 
   // Interceptor de respuesta de Axios
@@ -79,7 +79,7 @@ export const AxiosInterceptor = () => {
       localStorageClear(LocalStorageKeys.REFRESH_TOKEN);
       SnackbarUtilities.error(GetValidationError(error.code));
       return Promise.reject(error);
-    }
+    },
   );
 
   // Interceptor de solicitud de Axios
@@ -97,7 +97,7 @@ export const AxiosInterceptor = () => {
     (error) => {
       // Manejar errores de solicitud
       return Promise.reject(error);
-    }
+    },
   );
 
   // Interceptor de respuesta de Axios
@@ -114,6 +114,6 @@ export const AxiosInterceptor = () => {
       localStorageClear(LocalStorageKeys.REFRESH_TOKEN);
       SnackbarUtilities.error(GetValidationError(error.code));
       return Promise.reject(error);
-    }
+    },
   );
 };
