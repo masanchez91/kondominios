@@ -52,10 +52,5 @@
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-plugin-windicss": "^1.9.3"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }
