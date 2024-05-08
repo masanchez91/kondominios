@@ -26,7 +26,11 @@
     "types": ["react", "react-dom", "react-router-dom"]
   },
   "include": [
-    "src"
+    "vite.config.ts",
+    ".eslintrc.cjs",
+    "src",
+    "postcss.config.js",
+    "tailwind.config.js"
   ],
   "references": [
     {

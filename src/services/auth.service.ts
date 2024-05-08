@@ -1,30 +1,32 @@
-import { AxiosResponse, AxiosError } from "axios";
-import { publicAxiosConfig, setHeaders } from "../interceptors";
-import { LocalStorageKeys, localStorageSave } from "../utilities";
+import { AxiosResponse } from 'axios';
+import { publicAxiosConfig, setHeaders } from '../interceptors';
+import { LocalStorageKeys, localStorageSave } from '../utilities';
+import { UserInfo } from '../models';
 
-const loginEndpoint = "/login";
+const loginEndpoint = '/login';
 
 export const loginUser = async () => {
-  const requestData = {
-    email: "mauro@gmail.com",
-    password: "1234567",
-  };
+    const requestData = {
+        email: 'mauro@gmail.com',
+        password: '1234567',
+    };
 
-  return publicAxiosConfig
-    .post(loginEndpoint, requestData)
-    .then((response: AxiosResponse<any>) => {
-      const { accessToken, refreshToken } = response.data;
+    return publicAxiosConfig.post(loginEndpoint, requestData).then(
+        (
+            response: AxiosResponse<{
+                accessToken: string;
+                refreshToken: string;
+                user: UserInfo;
+            }>,
+        ) => {
+            const { accessToken, refreshToken } = response.data;
 
-      localStorageSave(LocalStorageKeys.ACCESS_TOKEN, accessToken);
-      localStorageSave(LocalStorageKeys.REFRESH_TOKEN, refreshToken);
+            localStorageSave(LocalStorageKeys.ACCESS_TOKEN, accessToken);
+            localStorageSave(LocalStorageKeys.REFRESH_TOKEN, refreshToken);
 
-      setHeaders(accessToken);
+            setHeaders(accessToken);
 
-      return response.data.user;
-    })
-    .catch((error: AxiosError<any>) => {
-      // Aquí puedes manejar errores de red o del servidor
-      console.error("There was an error!", error);
-      throw error;
-    });
+            return response.data.user;
+        },
+    );
 };

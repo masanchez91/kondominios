@@ -1,22 +1,20 @@
-import React, { SelectHTMLAttributes } from "react";
+import React, { SelectHTMLAttributes } from 'react';
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  options: string[];
+    options: string[];
+    id?: string;
 }
 
-const Select: React.FC<SelectProps> = ({ options, ...props }) => {
-  return (
-    <select
-      className="w-full p-2 border border-gray-300 rounded mt-1"
-      {...props}
-    >
-      {options.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
-  );
+const Select: React.FC<SelectProps> = ({ options }) => {
+    return (
+        <select className="w-full p-2 border border-gray-300 rounded mt-1">
+            {options.map(option => (
+                <option key={option} value={option}>
+                    {option}
+                </option>
+            ))}
+        </select>
+    );
 };
 
 export default Select;

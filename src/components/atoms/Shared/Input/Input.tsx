@@ -1,16 +1,19 @@
-import React, { InputHTMLAttributes } from "react";
+import React, { InputHTMLAttributes } from 'react';
 
-type InputProps = InputHTMLAttributes<HTMLInputElement>;
+type InputProps = {
+    type?: string;
+    id?: string;
+} & InputHTMLAttributes<HTMLInputElement>;
 
-const Input: React.FC<InputProps> = ({ type, ...props }) => {
-  return (
-    <input
-      type={type}
-      className="w-full p-2 border border-gray-300 rounded mt-1"
-      autoComplete="current-password"
-      {...props}
-    />
-  );
+const Input: React.FC<InputProps> = ({ type, id }) => {
+    return (
+        <input
+            type={type}
+            id={id}
+            className="w-full p-2 border border-gray-300 rounded mt-1"
+            autoComplete="current-password"
+        />
+    );
 };
 
 export default Input;

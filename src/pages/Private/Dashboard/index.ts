@@ -1,1 +1,1 @@
-export { default as Dashboard } from "./DashboardPageView";
+export { default as Dashboard } from './DashboardPageView';

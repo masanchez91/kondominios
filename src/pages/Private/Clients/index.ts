@@ -1,1 +1,1 @@
-export { default as Clients } from "./ClientsPageView";
+export { default as Clients } from './ClientsPageView';

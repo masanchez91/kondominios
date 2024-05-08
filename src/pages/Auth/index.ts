@@ -1,3 +1,3 @@
-export * from "./LogOut";
-export * from "./Login";
-export * from "./SingUp";
+export * from './LogOut';
+export * from './Login';
+export * from './SingUp';
