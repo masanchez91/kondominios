@@ -22,9 +22,12 @@ interface LoginFormProps {
 }
 
 const LoginForm: React.FC<LoginFormProps> = ({ loading }) => {
+    if (loading) {
+        return <AuthFormSkeleton />;
+    }
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -43,10 +46,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ loading }) => {
             console.error('Error al realizar la solicitud:', error);
         }
     };
-
-    if (loading) {
-        return <AuthFormSkeleton />;
-    }
 
     return (
         <>

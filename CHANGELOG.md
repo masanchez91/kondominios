@@ -1,5 +1,6 @@
 ## 0.1.0 (2024-05-08)
 
+* hammer: :hammer: agregar commits al changelog ([b9802e1](https://github.com/masanchez91/kondominios/commit/b9802e1))
 * feat: :recycle: se inicia sesiónde manera dinamica ([f91928a](https://github.com/masanchez91/kondominios/commit/f91928a))
 * feat: :tada: inicia proyecto de kondominios ([085b296](https://github.com/masanchez91/kondominios/commit/085b296))
 * feat: agregar configuración de eslint y husky ([bbed67b](https://github.com/masanchez91/kondominios/commit/bbed67b))

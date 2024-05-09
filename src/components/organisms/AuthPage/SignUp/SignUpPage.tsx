@@ -10,7 +10,7 @@ const LoginPage: React.FC = () => {
         setTimeout(() => {
             setLoading(false);
         }, 300);
-    }, []);
+    }, [setLoading]);
 
     const imagePaths = authImages;
 
