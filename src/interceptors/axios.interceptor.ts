@@ -69,7 +69,7 @@ export const AxiosInterceptor = () => {
     axiosInstancePrivate.interceptors.response.use(
         (response: AxiosResponse) => {
             // Muestra una notificación de éxito
-            SnackbarUtilities.success('Success');
+            SnackbarUtilities.success('Acción exitosa');
             return response;
         },
         error => {
@@ -104,7 +104,7 @@ export const AxiosInterceptor = () => {
     axiosInstancePublic.interceptors.response.use(
         (response: AxiosResponse) => {
             // Muestra una notificación de éxito
-            SnackbarUtilities.success('Success');
+            SnackbarUtilities.success('Acción exitosa');
             return response;
         },
         error => {
