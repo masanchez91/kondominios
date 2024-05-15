@@ -1,14 +1,7 @@
 function Spinner() {
     return (
-        <div className="flex justify-center items-center h-screen">
-            <div className="relative w-12 h-12">
-                <div className="absolute inset-0 flex justify-center items-center">
-                    <div className="border-4 border-gray-200 rounded-full w-full h-full animate-spin" />
-                </div>
-                <div className="absolute inset-2 flex justify-center items-center">
-                    <div className="border-4 border-gray-200 rounded-full w-8 h-8 animate-spin" />
-                </div>
-            </div>
+        <div className="fixed top-0 right-0 h-screen w-screen z-50 flex justify-center items-center">
+            <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
         </div>
     );
 }

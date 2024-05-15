@@ -10,6 +10,7 @@ import { Dashboard } from './pages/Private';
 import store from './redux/store';
 import { RoutesWithNotFound } from './utilities';
 import { SnackbarUtilitiesConfigurator } from './utilities/SnackbarManager';
+import Spinner from './components/atoms/Shared/Spinner';
 
 const Private = lazy(() => import('./routes/Private'));
 const Public = lazy(() => import('./routes/Public'));
@@ -19,7 +20,7 @@ function App() {
         <div className="App">
             <SnackbarProvider>
                 <SnackbarUtilitiesConfigurator />
-                <Suspense fallback={<>Cargando</>}>
+                <Suspense fallback={<Spinner />}>
                     <Provider store={store}>
                         <BrowserRouter>
                             <LogOut />
