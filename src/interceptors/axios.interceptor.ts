@@ -10,8 +10,8 @@ import {
     LocalStorageKeys,
     localStorageClear,
     localStorageGet,
+    SnackbarUtilities,
 } from '../utilities';
-import SnackbarUtilities from '../utilities/SnackbarManager';
 import { privateAxiosConfig, publicAxiosConfig } from './axios.config';
 
 // Define un tipo de solicitud interno que extiende AxiosRequestConfig

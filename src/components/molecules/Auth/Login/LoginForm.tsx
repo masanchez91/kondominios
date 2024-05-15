@@ -4,7 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { PrivateRoutes, PublicRoutes } from '../../../../models';
 import { UserKey, createUser, resetUser } from '../../../../redux/states/user';
 import { loginUser } from '../../../../services';
-import { localStorageClear } from '../../../../utilities';
+import {
+    GetValidationError,
+    IsValidEmail,
+    IsValidPassword,
+    localStorageClear,
+    SnackbarUtilities,
+} from '../../../../utilities';
 import AuthFormSkeleton from '../../../atoms/Auth/AuthFormSkeleton';
 import AuthHeader from '../../../atoms/Auth/AuthHeader';
 import ButtonGoogle from '../../../atoms/Auth/ButtonGoogle';
@@ -30,6 +36,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ loading }) => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordValid, setPasswordValid] = useState(false);
+    const [emailValid, setEmailValid] = useState(false);
 
     useEffect(() => {
         localStorageClear(UserKey);
@@ -37,8 +45,43 @@ const LoginForm: React.FC<LoginFormProps> = ({ loading }) => {
         navigate(`/${PublicRoutes.LOGIN}`, { replace: true });
     }, [dispatch, navigate]);
 
+    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newPassword = e.target.value;
+        const isValidPassword = IsValidPassword(newPassword);
+        setPasswordValid(isValidPassword);
+        setPassword(newPassword);
+    };
+
+    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newEmail = e.target.value;
+        const isValidEmail = IsValidEmail(newEmail);
+        setEmailValid(isValidEmail);
+        setEmail(newEmail);
+    };
+
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+    };
+
     const login = async () => {
         try {
+            const errors: string[] = [];
+
+            if (!passwordValid) {
+                errors.push(GetValidationError('PASSWORD_INVALID'));
+            }
+
+            if (!emailValid) {
+                errors.push(GetValidationError('EMAIL_INVALID'));
+            }
+
+            if (errors.length > 0) {
+                for (const error of errors) {
+                    SnackbarUtilities.warning(error);
+                }
+                return;
+            }
+
             const result = await loginUser(email, password);
             dispatch(createUser({ ...result }));
             navigate(`/${PrivateRoutes.PRIVATE}`, { replace: true });
@@ -53,7 +96,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ loading }) => {
                 title="Acceso"
                 description="Si ya eres miembro, inicia sesión fácilmente."
             />
-            <form action="" className="space-y-6 w-full rounded mt-4">
+            <form
+                action=""
+                className="space-y-6 w-full rounded mt-4"
+                onSubmit={handleSubmit}
+            >
                 <div>
                     <Label htmlFor="email" align="left">
                         Correo:
@@ -63,7 +110,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ loading }) => {
                         id="email"
                         name="email"
                         value={email}
-                        onChange={e => setEmail(e.target.value)}
+                        onChange={handleEmailChange}
                     />
                 </div>
                 <div>
@@ -74,7 +121,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ loading }) => {
                         id="password"
                         name="password"
                         value={password}
-                        onChange={e => setPassword(e.target.value)}
+                        onChange={handlePasswordChange}
                     />
                 </div>
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between">

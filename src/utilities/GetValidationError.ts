@@ -12,6 +12,8 @@ export const GetValidationError = (errorCode: ErrorCode): string => {
         ERR_400: 'Error 400',
         ERR_401: 'Error 401',
         ERR_403: 'Error 403',
+        PASSWORD_INVALID: 'La contraseña no cumple con los requisitos',
+        EMAIL_INVALID: 'El correo no cumple con los requisitos',
     };
 
     return codeMatcher[errorCode] ?? 'Error desconocido';
