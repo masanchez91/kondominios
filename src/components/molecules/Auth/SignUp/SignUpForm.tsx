@@ -1,5 +1,4 @@
 import React from 'react';
-import AuthFormSkeleton from '../../../atoms/Auth/AuthFormSkeleton';
 import AuthHeader from '../../../atoms/Auth/AuthHeader';
 import ButtonGoogle from '../../../atoms/Auth/ButtonGoogle';
 import LoginButton from '../../../atoms/Auth/LoginButton';
@@ -9,15 +8,7 @@ import Input from '../../../atoms/Shared/Input/Input';
 import Label from '../../../atoms/Shared/Label/Label';
 import Select from '../../../atoms/Shared/Select/Select';
 
-interface SignUpFormFormProps {
-    loading: boolean;
-}
-
-const SignUpForm: React.FC<SignUpFormFormProps> = ({ loading }) => {
-    if (loading) {
-        return <AuthFormSkeleton />;
-    }
-
+const SignUpForm: React.FC = () => {
     return (
         <>
             <AuthHeader

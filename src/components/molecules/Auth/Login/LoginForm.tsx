@@ -5,7 +5,6 @@ import { PrivateRoutes } from '../../../../models';
 import { createUser } from '../../../../redux/states/user';
 import { loginUser } from '../../../../services';
 import { GetValidationError, SnackbarUtilities } from '../../../../utilities';
-import AuthFormSkeleton from '../../../atoms/Auth/AuthFormSkeleton';
 import AuthHeader from '../../../atoms/Auth/AuthHeader';
 import ButtonGoogle from '../../../atoms/Auth/ButtonGoogle';
 import DesktopLinkAtom from '../../../atoms/Auth/DesktopLinkAtom';
@@ -17,15 +16,7 @@ import PasswordInput from '../../../atoms/Shared/Input/PasswordInput';
 import { useLoginForm } from './LoginFormContext';
 import SignUpButton from '../../../atoms/Auth/SignUpButton';
 
-interface LoginFormProps {
-    loading: boolean;
-}
-
-const LoginForm: React.FC<LoginFormProps> = ({ loading }) => {
-    if (loading) {
-        return <AuthFormSkeleton />;
-    }
-
+const LoginForm: React.FC = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {
