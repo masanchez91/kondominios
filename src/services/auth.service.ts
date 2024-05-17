@@ -4,6 +4,7 @@ import { LocalStorageKeys, localStorageSave } from '../utilities';
 import { UserInfo } from '../models';
 
 const loginEndpoint = '/login';
+const signUpEndpoint = '/signup';
 
 export const loginUser = async (email: string, password: string) => {
     const requestData = {
@@ -12,6 +13,39 @@ export const loginUser = async (email: string, password: string) => {
     };
 
     return publicAxiosConfig.post(loginEndpoint, requestData).then(
+        (
+            response: AxiosResponse<{
+                accessToken: string;
+                refreshToken: string;
+                user: UserInfo;
+            }>,
+        ) => {
+            const { accessToken, refreshToken } = response.data;
+
+            localStorageSave(LocalStorageKeys.ACCESS_TOKEN, accessToken);
+            localStorageSave(LocalStorageKeys.REFRESH_TOKEN, refreshToken);
+
+            setHeaders(accessToken);
+
+            return response.data.user;
+        },
+    );
+};
+
+export const signUpUser = async (
+    name: string,
+    email: string,
+    password: string,
+    aboutUs: string,
+) => {
+    const requestData = {
+        name,
+        email,
+        password,
+        aboutUs,
+    };
+
+    return publicAxiosConfig.post(signUpEndpoint, requestData).then(
         (
             response: AxiosResponse<{
                 accessToken: string;

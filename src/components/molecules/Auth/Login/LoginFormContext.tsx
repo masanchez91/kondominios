@@ -1,13 +1,13 @@
 import React, { ReactNode, createContext, useContext } from 'react';
-import { useAuthentication } from '../../../../hooks/AuthHooks';
+import useAuthentication from '../../../../hooks/useAuthentication';
 
 interface LoginFormContextType {
     email: string;
     password: string;
-    passwordValid: boolean;
     emailValid: boolean;
-    handlePasswordChange: (password: string) => void;
-    handleEmailChange: (email: string) => void;
+    passwordValid: boolean;
+    handleEmailChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    handlePasswordChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const LoginFormContext = createContext<LoginFormContextType | undefined>(

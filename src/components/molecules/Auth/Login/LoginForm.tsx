@@ -13,10 +13,10 @@ import Button from '../../../atoms/Shared/Button/Button';
 import Checkbox from '../../../atoms/Shared/Checkbox/Checkbox';
 import EmailInput from '../../../atoms/Shared/Input/EmailInput';
 import PasswordInput from '../../../atoms/Shared/Input/PasswordInput';
-import { useLoginForm } from './LoginFormContext';
+import { LoginFormProvider, useLoginForm } from './LoginFormContext';
 import SignUpButton from '../../../atoms/Auth/SignUpButton';
 
-const LoginForm: React.FC = () => {
+const LoginComponent: React.FC = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {
@@ -99,5 +99,11 @@ const LoginForm: React.FC = () => {
         </>
     );
 };
+
+const LoginForm: React.FC = () => (
+    <LoginFormProvider>
+        <LoginComponent />
+    </LoginFormProvider>
+);
 
 export default LoginForm;

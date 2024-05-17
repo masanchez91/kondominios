@@ -4,7 +4,7 @@ import PasswordInput from '../../Auth/PasswordInput';
 
 interface PasswordInputProps {
     value: string;
-    onChange: (password: string) => void;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const PasswordInputForm: React.FC<PasswordInputProps> = ({
@@ -20,7 +20,7 @@ const PasswordInputForm: React.FC<PasswordInputProps> = ({
                 id="password"
                 name="password"
                 value={value}
-                onChange={e => onChange(e.target.value)}
+                onChange={onChange}
             />
         </div>
     );

@@ -4,7 +4,7 @@ import Label from '../Label/Label';
 
 interface EmailInputProps {
     value: string;
-    onChange: (email: string) => void;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const EmailInput: React.FC<EmailInputProps> = ({ value, onChange }) => {
@@ -18,7 +18,7 @@ const EmailInput: React.FC<EmailInputProps> = ({ value, onChange }) => {
                 id="email"
                 name="email"
                 value={value}
-                onChange={e => onChange(e.target.value)}
+                onChange={onChange}
             />
         </div>
     );
