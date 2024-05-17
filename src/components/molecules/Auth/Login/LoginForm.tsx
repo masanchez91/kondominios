@@ -76,10 +76,10 @@ const LoginComponent: React.FC = () => {
                 />
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                     <Checkbox id="recuerdame" label="Recuérdame" />
-                    <DesktopLinkAtom href="">
+                    <DesktopLinkAtom href="/recover">
                         ¿Has olvidado tu contraseña?
                     </DesktopLinkAtom>
-                    <MobileLinkAtom href="">
+                    <MobileLinkAtom href="/recover">
                         ¿Has olvidado tu contraseña?
                     </MobileLinkAtom>
                 </div>

@@ -5,6 +5,7 @@ import { UserInfo } from '../models';
 
 const loginEndpoint = '/login';
 const signUpEndpoint = '/signup';
+const recoverEndpoint = '/recover';
 
 export const loginUser = async (email: string, password: string) => {
     const requestData = {
@@ -63,4 +64,16 @@ export const signUpUser = async (
             return response.data.user;
         },
     );
+};
+
+export const recoverPasswordUser = async (email: string) => {
+    const requestData = {
+        email,
+    };
+
+    return publicAxiosConfig
+        .post(recoverEndpoint, requestData)
+        .then((response: AxiosResponse<Record<string, never>>) => {
+            return response.data;
+        });
 };
