@@ -6,6 +6,7 @@ import { UserInfo } from '../models';
 const loginEndpoint = '/login';
 const signUpEndpoint = '/signup';
 const recoverEndpoint = '/recover';
+const resetEndpoint = '/reset';
 
 export const loginUser = async (email: string, password: string) => {
     const requestData = {
@@ -76,4 +77,35 @@ export const recoverPasswordUser = async (email: string) => {
         .then((response: AxiosResponse<Record<string, never>>) => {
             return response.data;
         });
+};
+
+export const resetPasswordUser = async (
+    id: string,
+    email: string,
+    password: string,
+) => {
+    const requestData = {
+        id,
+        email,
+        password,
+    };
+
+    return publicAxiosConfig.post(resetEndpoint, requestData).then(
+        (
+            response: AxiosResponse<{
+                accessToken: string;
+                refreshToken: string;
+                user: UserInfo;
+            }>,
+        ) => {
+            const { accessToken, refreshToken } = response.data;
+
+            localStorageSave(LocalStorageKeys.ACCESS_TOKEN, accessToken);
+            localStorageSave(LocalStorageKeys.REFRESH_TOKEN, refreshToken);
+
+            setHeaders(accessToken);
+
+            return response.data.user;
+        },
+    );
 };

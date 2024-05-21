@@ -12,6 +12,7 @@ const Input: React.FC<InputProps> = ({ type, ...rest }) => {
             name={rest.name}
             onChange={rest.onChange}
             value={rest.value}
+            readOnly={rest.readOnly}
         />
     );
 };

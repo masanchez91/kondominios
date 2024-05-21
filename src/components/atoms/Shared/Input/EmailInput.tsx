@@ -5,9 +5,14 @@ import Label from '../Label/Label';
 interface EmailInputProps {
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    readOnly?: boolean;
 }
 
-const EmailInput: React.FC<EmailInputProps> = ({ value, onChange }) => {
+const EmailInput: React.FC<EmailInputProps> = ({
+    value,
+    onChange,
+    readOnly,
+}) => {
     return (
         <div>
             <Label htmlFor="email" align="left">
@@ -19,6 +24,7 @@ const EmailInput: React.FC<EmailInputProps> = ({ value, onChange }) => {
                 name="email"
                 value={value}
                 onChange={onChange}
+                readOnly={readOnly}
             />
         </div>
     );
