@@ -5,7 +5,6 @@ import { BrowserRouter, Navigate, Route } from 'react-router-dom';
 import './App.css';
 import { AuthGuard, RoleGuard } from './guards';
 import { PrivateRoutes, Roles } from './models';
-import LogOut from './pages/Auth/LogOut/LogOutPageView';
 import { Dashboard } from './pages/Private';
 import store from './redux/store';
 import { RoutesWithNotFound } from './utilities';
@@ -23,7 +22,6 @@ function App() {
                 <Suspense fallback={<Spinner />}>
                     <Provider store={store}>
                         <BrowserRouter>
-                            <LogOut />
                             <RoutesWithNotFound>
                                 <Route
                                     path="/"
