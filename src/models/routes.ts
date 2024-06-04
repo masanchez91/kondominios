@@ -12,4 +12,4 @@ export const PrivateRoutes = {
     SETTINGS: 'Settings',
     HELP: 'Help',
     LOGOUT: 'Logout',
-}
+};
