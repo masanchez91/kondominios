@@ -1,1 +1,1 @@
-export { default as LogOut } from './LogOutPageView';
+export { LogOut } from './LogOutPageView';
