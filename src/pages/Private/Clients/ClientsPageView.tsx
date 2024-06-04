@@ -1,5 +1,5 @@
 function ClientsPageView() {
-    return <div>Clients</div>;
+    return <div>CLIENTES</div>;
 }
 
 export default ClientsPageView;

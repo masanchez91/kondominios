@@ -9,4 +9,7 @@ export const PrivateRoutes = {
     PRIVATE: 'private',
     DASHBOARD: 'Dashboard',
     CLIENTS: 'Clients',
+    SETTINGS: 'Settings',
+    HELP: 'Help',
+    LOGOUT: 'Logout',
 };
