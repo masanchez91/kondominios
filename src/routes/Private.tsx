@@ -9,7 +9,9 @@ const Dashboard = lazy(
 );
 const Clients = lazy(() => import('../pages/Private/Clients/ClientsPageView'));
 const Help = lazy(() => import('../pages/Private/Help/HelpPageView'));
-const Settings = lazy(() => import('../pages/Private/Settings/SettingsPageView'));
+const Settings = lazy(
+    () => import('../pages/Private/Settings/SettingsPageView'),
+);
 
 function Private() {
     return (
