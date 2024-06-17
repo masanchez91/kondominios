@@ -3,7 +3,8 @@ import ArrowRightStartOnRectangle from '../../components/icons/ArrowRightStartOn
 import Settings from '../../components/icons/Settings';
 import ChatBubble from '../../components/icons/ChatBubble';
 import Users from '../../components/icons/Users';
-import Sidebar, { SidebarItem } from '../organisms/SidebarPage/SidebarPage';
+import Sidebar from '../organisms/SidebarPage/Sidebar';
+import SidebarItem from '../molecules/Sidebar/SidebarItem';
 import { LogOut } from '../../pages/Auth/LogOut/LogOutPageView';
 import { PrivateRoutes } from '../../models';
 import { useState, useEffect } from 'react';
