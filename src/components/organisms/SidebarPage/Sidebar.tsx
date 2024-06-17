@@ -7,7 +7,7 @@ const SidebarContext = createContext({ expanded: true });
 export default function Sidebar({ children }: { children: ReactNode }) {
     const [expanded, setExpanded] = useState(true);
 
-    const toggleExpand = () => setExpanded((curr) => !curr);
+    const toggleExpand = () => setExpanded(curr => !curr);
 
     return (
         <>
@@ -23,12 +23,19 @@ export default function Sidebar({ children }: { children: ReactNode }) {
                 }}
             >
                 <nav className="h-full flex flex-col bg-white border-r shadow-sm">
-                    <LogoWithButton expanded={expanded} toggleExpand={toggleExpand} />
+                    <LogoWithButton
+                        expanded={expanded}
+                        toggleExpand={toggleExpand}
+                    />
                     <SidebarContext.Provider value={{ expanded }}>
                         <ul className="flex-1 px-3">{children}</ul>
                     </SidebarContext.Provider>
                     <div className="p-4 pb-1">
-                        {expanded && <span className="text-xs text-gray-500">versión pre-alfa 0.0.1</span>}
+                        {expanded && (
+                            <span className="text-xs text-gray-500">
+                                versión pre-alfa 0.0.1
+                            </span>
+                        )}
                     </div>
                     <UserProfile expanded={expanded} />
                 </nav>

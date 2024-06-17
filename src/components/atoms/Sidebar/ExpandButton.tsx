@@ -1,7 +1,13 @@
 import ChevronDoubleLeft from '../../icons/ChevronDoubleLeft';
 import ChevronDoubleRight from '../../icons/ChevronDoubleRight';
 
-export default function ExpandButton({ expanded, onClick }: { expanded: boolean; onClick: () => void }) {
+export default function ExpandButton({
+    expanded,
+    onClick,
+}: {
+    expanded: boolean;
+    onClick: () => void;
+}) {
     return (
         <button
             onClick={onClick}
