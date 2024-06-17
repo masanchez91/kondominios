@@ -1,14 +1,14 @@
-import Dashboard from '../../../components/icons/Dashboard';
-import ArrowRightStartOnRectangle from '../../../components/icons/ArrowRightStartOnRectangle';
-import Settings from '../../../components/icons/Settings';
-import ChatBubble from '../../../components/icons/ChatBubble';
-import Users from '../../../components/icons/Users';
-import Sidebar, { SidebarItem } from '../../../components/organisms/Sidebar';
-import { LogOut } from '../../../pages/Auth/LogOut/LogOutPageView';
-import { PrivateRoutes } from '../../../models';
+import Dashboard from '../../components/icons/Dashboard';
+import ArrowRightStartOnRectangle from '../../components/icons/ArrowRightStartOnRectangle';
+import Settings from '../../components/icons/Settings';
+import ChatBubble from '../../components/icons/ChatBubble';
+import Users from '../../components/icons/Users';
+import Sidebar, { SidebarItem } from '../organisms/SidebarPage/SidebarPage';
+import { LogOut } from '../../pages/Auth/LogOut/LogOutPageView';
+import { PrivateRoutes } from '../../models';
 import { useState, useEffect } from 'react';
 
-function SiderbarPage() {
+function SiderbarPageTemplate() {
     const handleLogOut = LogOut();
 
     const getInitialActiveItem = () => {
@@ -72,10 +72,11 @@ function SiderbarPage() {
                         to={`${PrivateRoutes.LOGOUT}`}
                         onClick={handleLogOut}
                     />
+                    <hr className="my-3" />
                 </Sidebar>
             </div>
         </>
     );
 }
 
-export default SiderbarPage;
+export default SiderbarPageTemplate;

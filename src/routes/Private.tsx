@@ -2,7 +2,7 @@ import { lazy } from 'react';
 import { Navigate, Route } from 'react-router-dom';
 import { PrivateRoutes } from '../models';
 import { RoutesWithNotFound } from '../utilities';
-import Sidebar from '../components/organisms/SidebarPage';
+import SiderbarPageTemplate from '../components/templates/SidebarTemplate';
 
 const Dashboard = lazy(
     () => import('../pages/Private/Dashboard/DashboardPageView'),
@@ -16,7 +16,7 @@ const Settings = lazy(
 function Private() {
     return (
         <>
-            <Sidebar />
+            <SiderbarPageTemplate />
             <RoutesWithNotFound>
                 <Route
                     path="/"
