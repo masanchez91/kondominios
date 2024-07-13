@@ -11,5 +11,6 @@ export const PrivateRoutes = {
     CLIENTS: 'Clients',
     SETTINGS: 'Settings',
     HELP: 'Help',
+    PROFILE: 'Profile',
     LOGOUT: 'Logout',
 };

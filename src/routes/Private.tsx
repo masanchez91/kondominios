@@ -12,6 +12,7 @@ const Help = lazy(() => import('../pages/Private/Help/HelpPageView'));
 const Settings = lazy(
     () => import('../pages/Private/Settings/SettingsPageView'),
 );
+const Profile = lazy(() => import('../pages/Private/Profile/ProfilePageView'));
 
 function Private() {
     return (
@@ -26,6 +27,7 @@ function Private() {
                 <Route path={PrivateRoutes.CLIENTS} element={<Clients />} />
                 <Route path={PrivateRoutes.HELP} element={<Help />} />
                 <Route path={PrivateRoutes.SETTINGS} element={<Settings />} />
+                <Route path={PrivateRoutes.PROFILE} element={<Profile />} />
             </RoutesWithNotFound>
         </>
     );

@@ -1,8 +1,9 @@
-import Dashboard from '../../components/icons/Dashboard';
-import ArrowRightStartOnRectangle from '../../components/icons/ArrowRightStartOnRectangle';
-import Settings from '../../components/icons/Settings';
-import ChatBubble from '../../components/icons/ChatBubble';
-import Users from '../../components/icons/Users';
+import Dashboard from '../icons/Dashboard';
+import ArrowRightStartOnRectangle from '../icons/ArrowRightStartOnRectangle';
+import Settings from '../icons/Settings';
+import ChatBubble from '../icons/ChatBubble';
+import Users from '../icons/Users';
+import Profile from '../icons/Profile';
 import Sidebar from '../organisms/SidebarPage/Sidebar';
 import SidebarItem from '../molecules/Sidebar/SidebarItem';
 import { LogOut } from '../../pages/Auth/LogOut/LogOutPageView';
@@ -74,6 +75,14 @@ function SiderbarPageTemplate() {
                         onClick={handleLogOut}
                     />
                     <hr className="my-3" />
+                    <SidebarItem
+                        icon={<Profile />}
+                        text="Perfil"
+                        active
+                        alert={activeItem === PrivateRoutes.PROFILE}
+                        to={`${PrivateRoutes.PROFILE}`}
+                        onClick={() => handleClick(PrivateRoutes.PROFILE)}
+                    />
                 </Sidebar>
             </div>
         </>
