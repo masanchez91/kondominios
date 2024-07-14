@@ -4,7 +4,7 @@ interface SvgProps {
     fill?: string;
 }
 
-const Users: React.FC<SvgProps> = ({}) => (
+const Users: React.FC<SvgProps> = () => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

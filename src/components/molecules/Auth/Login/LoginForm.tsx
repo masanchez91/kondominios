@@ -1,20 +1,20 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import logo from '../../../../assets/LogoHeaderLogin.png';
 import { PrivateRoutes } from '../../../../models';
 import { createUser } from '../../../../redux/states/user';
 import { loginUser } from '../../../../services';
 import { GetValidationError, SnackbarUtilities } from '../../../../utilities';
 import AuthHeader from '../../../atoms/Auth/AuthHeader';
-import ButtonGoogle from '../../../atoms/Auth/ButtonGoogle';
 import DesktopLinkAtom from '../../../atoms/Auth/DesktopLinkAtom';
 import MobileLinkAtom from '../../../atoms/Auth/MobileLinkAtom';
+import SignUpButton from '../../../atoms/Auth/SignUpButton';
 import Button from '../../../atoms/Shared/Button/Button';
 import Checkbox from '../../../atoms/Shared/Checkbox/Checkbox';
 import EmailInput from '../../../atoms/Shared/Input/EmailInput';
 import PasswordInput from '../../../atoms/Shared/Input/PasswordInput';
 import { LoginFormProvider, useLoginForm } from './LoginFormContext';
-import SignUpButton from '../../../atoms/Auth/SignUpButton';
 
 const LoginComponent: React.FC = () => {
     const dispatch = useDispatch();
@@ -51,6 +51,12 @@ const LoginComponent: React.FC = () => {
 
         try {
             const result = await loginUser(email, password);
+            //Ojo aca
+            if (result === null) {
+                SnackbarUtilities.error('Error decoding token.');
+                return;
+            }
+
             dispatch(createUser({ ...result }));
             navigate(`/${PrivateRoutes.PRIVATE}`, { replace: true });
         } catch (error) {
@@ -60,6 +66,12 @@ const LoginComponent: React.FC = () => {
 
     return (
         <>
+            <div className="p-1 pb-1 flex justify-around items-center">
+                <img
+                    src={logo}
+                    className="overflow-hidden transition-all max-w-44"
+                />
+            </div>
             <AuthHeader
                 title="Acceso"
                 description="Si ya eres miembro, inicia sesión fácilmente."
@@ -87,13 +99,17 @@ const LoginComponent: React.FC = () => {
                     <Button onClick={handleLogin} type="button">
                         Iniciar sesión
                     </Button>
-                    <ButtonGoogle label="Inicia sesión con Google" />
                 </div>
                 <div className="mt-8 flex justify-center items-center">
                     <p className="font-medium text-base">
                         ¿No tienes una cuenta?
                     </p>
                     <SignUpButton />
+                </div>
+                <div className="mt-8 flex justify-center items-center">
+                    <span className="text-xs text-gray-600">
+                        Versión Beta 2.0.0 | Todos los derechos reservados.
+                    </span>
                 </div>
             </form>
         </>

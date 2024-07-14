@@ -15,6 +15,11 @@ module.exports = {
         sourceType: 'module',
         project: './tsconfig.json',
     },
+    settings: {
+        react: {
+            version: '18.2.0',
+        },
+    },
     plugins: ['react', '@typescript-eslint', 'prettier'],
     rules: {
         'no-empty-function': 'error',

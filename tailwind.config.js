@@ -8,7 +8,12 @@ export default {
     ],
     darkMode: true,
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                'custom-kondominios-blue': '#818cf8',
+                'custom-kondominios-blue-dark': '#3730a3',
+            },
+        },
     },
     plugins: [],
 };

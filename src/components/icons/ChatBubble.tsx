@@ -4,7 +4,7 @@ interface SvgProps {
     fill?: string;
 }
 
-const ChatBubble: React.FC<SvgProps> = ({}) => (
+const ChatBubble: React.FC<SvgProps> = () => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

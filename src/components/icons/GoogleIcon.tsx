@@ -3,7 +3,7 @@ import React from 'react';
 interface SvgProps {
     fill?: string;
 }
-const Google: React.FC<SvgProps> = ({}) => (
+const Google: React.FC<SvgProps> = () => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         width={24}

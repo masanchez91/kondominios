@@ -1,6 +1,8 @@
 import { ReactNode, createContext, useState } from 'react';
+import LogoKondominios from '../../molecules/Sidebar/LogoKondominios';
 import LogoWithButton from '../../molecules/Sidebar/LogoWithButton';
 import UserProfile from '../../molecules/Sidebar/UserProfile';
+import VersionKondominios from '../../molecules/Sidebar/VersionKondominios';
 
 const SidebarContext = createContext({ expanded: true });
 
@@ -30,13 +32,8 @@ export default function Sidebar({ children }: { children: ReactNode }) {
                     <SidebarContext.Provider value={{ expanded }}>
                         <ul className="flex-1 px-3">{children}</ul>
                     </SidebarContext.Provider>
-                    <div className="p-4 pb-1">
-                        {expanded && (
-                            <span className="text-xs text-gray-500">
-                                versión pre-alfa 0.0.1
-                            </span>
-                        )}
-                    </div>
+                    <LogoKondominios expanded={expanded} />
+                    <VersionKondominios expanded={expanded} />
                     <UserProfile expanded={expanded} />
                 </nav>
             </aside>

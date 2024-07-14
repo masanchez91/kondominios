@@ -1,5 +1,5 @@
-function HelpPageView() {
+function ProfilePageView() {
     return <div>PERFIL</div>;
 }
 
-export default HelpPageView;
+export default ProfilePageView;

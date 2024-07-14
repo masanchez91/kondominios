@@ -3,7 +3,7 @@ import React from 'react';
 interface SvgProps {
     fill?: string;
 }
-const UndrawTakenIcon: React.FC<SvgProps> = ({}) => (
+const UndrawTakenIcon: React.FC<SvgProps> = () => (
     <svg
         id="f698cf57-4f6b-4529-a39c-70592e247574"
         data-name="Layer 1"

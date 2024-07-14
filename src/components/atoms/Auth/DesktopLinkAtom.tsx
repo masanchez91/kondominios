@@ -12,7 +12,7 @@ const DesktopLinkAtom: React.FC<DesktopLinkAtomProps> = ({
     return (
         <a
             href={href}
-            className="hidden md:block font-medium text-sm text-blue-500 md:mt-0 md:ml-4"
+            className="hidden md:block font-medium text-sm text-custom-kondominios-blue md:mt-0 md:ml-4"
         >
             {children}
         </a>

@@ -1,1 +1,1 @@
-export { default as Dashboard } from './ProfilePageView';
+export { default as Profile } from './ProfilePageView';

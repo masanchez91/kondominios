@@ -3,7 +3,7 @@ import React from 'react';
 interface SvgProps {
     fill?: string;
 }
-const EyeSlash: React.FC<SvgProps> = ({}) => (
+const EyeSlash: React.FC<SvgProps> = () => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
