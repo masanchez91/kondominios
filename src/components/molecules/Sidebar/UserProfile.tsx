@@ -17,8 +17,12 @@ export default function UserProfile({ expanded }: { expanded: boolean }) {
                 className={`flex justify-around items-center overflow-hidden ${expanded ? 'w-52 ml-3' : 'w-0'}`}
             >
                 <div className="leading-4">
-                    <h4 className="text-custom-kondominios-blue-dark font-semibold">{name}</h4>
-                    <span className="text-xs text-custom-kondominios-blue-dark">{email}</span>
+                    <h4 className="text-custom-kondominios-blue-dark font-semibold">
+                        {name}
+                    </h4>
+                    <span className="text-xs text-custom-kondominios-blue-dark">
+                        {email}
+                    </span>
                 </div>
                 <ArrowsUpDown />
             </div>
