@@ -108,7 +108,7 @@ const LoginComponent: React.FC = () => {
                 </div>
                 <div className="mt-8 flex justify-center items-center">
                     <span className="text-xs text-gray-600">
-                        Versión Beta 2.0.0 | Todos los derechos reservados.
+                        Versión Pre-Alfa 0.0.1 | Todos los derechos reservados.
                     </span>
                 </div>
             </form>
