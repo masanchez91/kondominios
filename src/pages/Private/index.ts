@@ -11,3 +11,4 @@ export * from './Reports';
 export * from './Settings';
 export * from './Support';
 export * from './Tutorial';
+export * from './Profile';
