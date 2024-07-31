@@ -16,7 +16,7 @@ const Public = lazy(() => import('./routes/Public'));
 
 function App() {
     return (
-        <div className="App">
+        <div className="font-sans App">
             <SnackbarProvider>
                 <SnackbarUtilitiesConfigurator />
                 <Suspense fallback={<Spinner />}>
