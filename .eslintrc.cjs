@@ -8,7 +8,14 @@ module.exports = {
         'plugin:@typescript-eslint/recommended',
         'plugin:prettier/recommended',
     ],
-    overrides: [],
+    overrides: [
+        {
+            files: ['vite.config.ts'],
+            parserOptions: {
+                project: 'tsconfig.node.json', // Usar el `tsconfig` correcto
+            },
+        },
+    ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaVersion: 'latest',
