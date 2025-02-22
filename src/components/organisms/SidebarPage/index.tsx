@@ -35,7 +35,7 @@ function SiderbarPage() {
                     <SidebarItem
                         icon={<Dashboard />}
                         text="Panel"
-                        active
+                        active={activeItem === PrivateRoutes.DASHBOARD}
                         alert={activeItem === PrivateRoutes.DASHBOARD}
                         to={`${PrivateRoutes.DASHBOARD}`}
                         onClick={() => handleClick(PrivateRoutes.DASHBOARD)}
@@ -43,7 +43,7 @@ function SiderbarPage() {
                     <SidebarItem
                         icon={<Users />}
                         text="Clientes"
-                        active
+                        active={activeItem === PrivateRoutes.CLIENTS}
                         alert={activeItem === PrivateRoutes.CLIENTS}
                         to={`${PrivateRoutes.CLIENTS}`}
                         onClick={() => handleClick(PrivateRoutes.CLIENTS)}
@@ -52,7 +52,7 @@ function SiderbarPage() {
                     <SidebarItem
                         icon={<Settings />}
                         text="Configuraciones"
-                        active
+                        active={activeItem === PrivateRoutes.SETTINGS}
                         alert={activeItem === PrivateRoutes.SETTINGS}
                         to={`${PrivateRoutes.SETTINGS}`}
                         onClick={() => handleClick(PrivateRoutes.SETTINGS)}
@@ -60,7 +60,7 @@ function SiderbarPage() {
                     <SidebarItem
                         icon={<ChatBubble />}
                         text="Ayuda"
-                        active
+                        active={activeItem === PrivateRoutes.HELP}
                         alert={activeItem === PrivateRoutes.HELP}
                         to={`${PrivateRoutes.HELP}`}
                         onClick={() => handleClick(PrivateRoutes.HELP)}
@@ -68,7 +68,7 @@ function SiderbarPage() {
                     <SidebarItem
                         icon={<ArrowRightStartOnRectangle />}
                         text="Salir"
-                        active
+                        active={activeItem === PrivateRoutes.LOGOUT}
                         alert={activeItem === PrivateRoutes.LOGOUT}
                         to={`${PrivateRoutes.LOGOUT}`}
                         onClick={handleLogOut}
