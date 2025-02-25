@@ -96,7 +96,7 @@ export function AccountPageView() {
     const [securityCode, setSecurityCode] = useState('');
     const [isAnnual, setIsAnnual] = useState(false); // false = mensual, true = anual
 
-    const handleChange = (e: { target: { value: string; }; }) => {
+    const handleChange = (e: { target: { value: string } }) => {
         const value = e.target.value.replace(/[^0-9]/g, ''); // Eliminar cualquier carácter no numérico
 
         if (value.length <= 4) {
