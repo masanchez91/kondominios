@@ -1,84 +1,106 @@
-import CurrencyDollar from '../../../components/icons/CurrencyDollar';
+import React, { useState } from "react";
 
-const includedFeatures = [
-    'Private forum access',
-    'Member resources',
-    'Entry to annual conference',
-    'Official member t-shirt',
+const initialInvoices = [
+  { id: 3066, date: "Jan 6, 2022", status: "Paid", customer: "Arthur Melo", email: "authurmelo@example.com", img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" },
+  { id: 3065, date: "Jan 5, 2022", status: "Cancelled", customer: "Andi Lane", email: "andi@example.com", img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" },
+  { id: 3064, date: "Jan 5, 2022", status: "Paid", customer: "Kate Morrison", email: "kate@example.com",img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" },
+  { id: 3063, date: "Jan 4, 2022", status: "Paid", customer: "Candice Wu", email: "candice@example.com",img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" },
+  { id: 3062, date: "Jan 4, 2022", status: "Refunded", customer: "Orlando Diggs", email: "orlando@example.com", img: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" },
 ];
-function BillingPageView() {
+
+const BillingDashboard = () => {
+  const [invoices, setInvoices] = useState(initialInvoices);
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
+
+  const sortBy = (key) => {
+    let direction = "asc";
+    if (sortConfig.key === key && sortConfig.direction === "asc") {
+      direction = "desc";
+    }
+    const sortedInvoices = [...invoices].sort((a, b) => {
+      if (a[key] < b[key]) return direction === "asc" ? -1 : 1;
+      if (a[key] > b[key]) return direction === "asc" ? 1 : -1;
+      return 0;
+    });
+    setInvoices(sortedInvoices);
+    setSortConfig({ key, direction });
+  };
+
+  const getStatusBadge = (status) => {
+    const statusStyles = {
+      Paid: "text-emerald-500 bg-emerald-100/60",
+      Cancelled: "text-red-500 bg-red-100/60",
+      Refunded: "text-gray-500 bg-gray-100/60",
+    };
+    const icons = {
+      Paid: "M10 3L4.5 8.5L2 6",
+      Cancelled: "M3 3L9 9M9 3L3 9",
+    };
+
     return (
-        <div className="bg-white py-24 sm:py-32">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                <div className="mx-auto max-w-2xl sm:text-center">
-                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                        Simple no-tricks pricing
-                    </h2>
-                    <p className="mt-6 text-lg leading-8 text-gray-600">
-                        Distinctio et nulla eum soluta et neque labore
-                        quibusdam. Saepe et quasi iusto modi velit ut non
-                        voluptas in. Explicabo id ut laborum.
-                    </p>
-                </div>
-                <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
-                    <div className="p-8 sm:p-10 lg:flex-auto">
-                        <h3 className="text-2xl font-bold tracking-tight text-gray-900">
-                            Lifetime membership
-                        </h3>
-                        <p className="mt-6 text-base leading-7 text-gray-600">
-                            Lorem ipsum dolor sit amet consect etur adipisicing
-                            elit. Itaque amet indis perferendis blanditiis
-                            repellendus etur quidem assumenda.
-                        </p>
-                        <div className="mt-10 flex items-center gap-x-4">
-                            <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">
-                                What’s included
-                            </h4>
-                            <div className="h-px flex-auto bg-gray-100" />
-                        </div>
-                        <ul
-                            role="list"
-                            className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6"
-                        >
-                            {includedFeatures.map(feature => (
-                                <li key={feature} className="flex gap-x-3">
-                                    <CurrencyDollar />
-                                    {feature}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
-                        <div className="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
-                            <div className="mx-auto max-w-xs px-8">
-                                <p className="text-base font-semibold text-gray-600">
-                                    Pay once, own it forever
-                                </p>
-                                <p className="mt-6 flex items-baseline justify-center gap-x-2">
-                                    <span className="text-5xl font-bold tracking-tight text-gray-900">
-                                        $349
-                                    </span>
-                                    <span className="text-sm font-semibold leading-6 tracking-wide text-gray-600">
-                                        USD
-                                    </span>
-                                </p>
-                                <a
-                                    href="#"
-                                    className="mt-10 block w-full rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                >
-                                    Get access
-                                </a>
-                                <p className="mt-6 text-xs leading-5 text-gray-600">
-                                    Invoices and receipts available for easy
-                                    company reimbursement
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+      <div className={`inline-flex items-center px-3 py-1 rounded-full gap-x-2 ${statusStyles[status] || "bg-gray-100/60 text-gray-500"}`}>
+        {icons[status] && (
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d={icons[status]} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        )}
+        <h2 className="text-sm font-normal">{status}</h2>
+      </div>
+    );
+  };
+
+  return (
+    <div className="l-[max(0%,50%-(theme(maxWidth.lg)/2))] bg-gray-50 py-2 px-2 md:px-24 md:ml-44">
+      
+      {/* Plan Details */}
+        <div className="flex flex-col md:flex-row py-2 overflow-x-visible bg-white rounded-lg shadow-md mb-4 p-20 md:p-4 pr-4">
+            <div className="w-full md:w-2/3 flex-shrink-0 bg-white rounded-md p-2">
+                <div className="text-left">
+                    <h2 className="text-xl md:text-2xl font-bold text-black mb-2">Plan Details</h2>
+                    <p className="text-sm">Free team plan (Effective from Jul 15, 2024)</p>
+                    <p className="text-sm">0 KB / 100 GB bandwidth</p>
+                    <p className="text-sm">0 / 300 build minutes</p>
                 </div>
             </div>
         </div>
-    );
-}
 
-export default BillingPageView;
+      {/* Invoices List */}
+      <div className="flex flex-col py-2 overflow-x-visible bg-white rounded-lg shadow-md mb-4 p-20 md:p-4 pr-4">
+          <div className="px-4 sm:px-0">
+            <h3 className="text-xl font-semibold leading-7 text-gray-900 text-left">
+                Invoices
+            </h3>
+            <p className="mt-1 max-w-2xl text-lg leading-6 text-gray-500 text-left">
+                Itemized statements of service charges
+            </p>
+          </div>
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b">
+                <th className="py-2 cursor-pointer" onClick={() => sortBy("id")}>Invoice</th>
+                <th className="cursor-pointer" onClick={() => sortBy("date")}>Date</th>
+                <th className="cursor-pointer" onClick={() => sortBy("status")}>Status</th>
+                <th className="cursor-pointer" onClick={() => sortBy("customer")}>Customer</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {invoices.map((invoice) => (
+                <tr key={invoice.id} className="border-b">
+                  <td className="py-2">#{invoice.id}</td>
+                  <td>{invoice.date}</td>
+                  <td>{getStatusBadge(invoice.status)}</td>
+                  <td>{invoice.customer}</td>
+                  <td>
+                    <a href="#" className="text-blue-500">Download</a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+      </div>
+    </div>
+  );
+};
+
+export default BillingDashboard;
